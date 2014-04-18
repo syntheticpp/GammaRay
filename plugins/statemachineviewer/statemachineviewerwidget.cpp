@@ -66,7 +66,7 @@ StateMachineViewerWidget::StateMachineViewerWidget(QWidget *parent, Qt::WindowFl
   : QWidget(parent, f)
   , m_ui(new Ui::StateMachineViewer)
   , m_graph(new GVGraph("State Machine"))
-  , m_font(QFont("Helvetica [Cronxy]", 6))
+  , m_font(QFont("Helvetica [Cronxy]", 20))
   , m_interface(0)
 {
   m_lastConfigurations.resize(5);
