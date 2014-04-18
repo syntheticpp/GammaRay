@@ -246,3 +246,4 @@ bool ProbeABI::operator<(const ProbeABI& rhs) const
     return minorQtVersion() < rhs.minorQtVersion();
   return majorQtVersion() < rhs.majorQtVersion();
 }
+

@@ -37,6 +37,8 @@ set_target_properties(gammaray_ui PROPERTIES
   SOVERSION ${GAMMARAY_SOVERSION}
   VERSION ${GAMMARAY_SOVERSION}
   OUTPUT_NAME gammaray_ui-${GAMMARAY_PROBE_ABI}
+  OUTPUT_NAME_DEBUG gammaray_ui-${GAMMARAY_PROBE_ABI_DEBUG}
+  OUTPUT_NAME_RELEASE gammaray_ui-${GAMMARAY_PROBE_ABI_RELEASE}
 )
 
 target_link_libraries(gammaray_ui

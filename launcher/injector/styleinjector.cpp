@@ -69,6 +69,7 @@ bool StyleInjector::selfTest()
 {
 #ifdef HAVE_QT_WIDGETS
   QCoreApplication::addLibraryPath(Paths::currentProbePath());
+  QCoreApplication::addLibraryPath(Paths::currentProbePath() + "/" GAMMARAY_INTDIR);
   if (!QStyleFactory::keys().contains(QLatin1String("gammaray-injector"))) {
     mErrorString = QObject::tr("Injector style plugin is not found in the Qt style "
                                "plug-in search path or cannot be loaded");

@@ -23,6 +23,8 @@
 */
 //krazy:excludeall=null,captruefalse,staticobjects
 
+#include "config-gammaray.h"
+
 #include "probe.h"
 #include "objectlistmodel.h"
 #include "objecttreemodel.h"
@@ -160,6 +162,7 @@ Probe::Probe(QObject *parent):
   Q_ASSERT(thread() == qApp->thread());
   IF_DEBUG(cout << "attaching GammaRay probe" << endl;)
 
+  Paths::setRelativeRootPath(GAMMARAY_INVERSE_BIN_DIR);
   ProbeSettings::receiveSettings();
   m_toolModel = new ToolModel(this);
 

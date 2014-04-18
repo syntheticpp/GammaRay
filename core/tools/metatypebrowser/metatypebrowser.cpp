@@ -26,6 +26,7 @@
 #include "metatypesmodel.h"
 
 #include <common/objectbroker.h>
+#include <QMessageBox>
 
 using namespace GammaRay;
 

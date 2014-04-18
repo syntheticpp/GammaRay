@@ -40,9 +40,18 @@ add_library(gammaray_widget_export_actions SHARED
   uiextractor.cpp
 )
 
-set_target_properties(gammaray_widget_export_actions PROPERTIES
-  LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${PLUGIN_INSTALL_DIR}/${GAMMARAY_PLUGIN_VERSION}/${GAMMARAY_PROBE_ABI}"
-)
+if(MSVC_IDE)
+  foreach(OUTPUTCONFIG ${CMAKE_CONFIGURATION_TYPES})
+    string(TOUPPER ${OUTPUTCONFIG} OUP)
+    set_target_properties(gammaray_widget_export_actions PROPERTIES
+      LIBRARY_OUTPUT_DIRECTORY_${OUP} "${PROJECT_BINARY_DIR}/${PLUGIN_INSTALL_DIR}/${GAMMARAY_PLUGIN_VERSION}/${GAMMARAY_PROBE_ABI_${OUP}}"
+    )
+  endforeach( )
+else()
+  set_target_properties(gammaray_widget_export_actions PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/${PLUGIN_INSTALL_DIR}/${GAMMARAY_PLUGIN_VERSION}/${GAMMARAY_PROBE_ABI}"
+  )
+endif()
 
 set(EXTRA_LIBS)
 if(HAVE_QT_DESIGNER)

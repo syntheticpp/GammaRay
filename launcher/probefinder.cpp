@@ -21,6 +21,7 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "config-gammaray.h"
 #include "probefinder.h"
 
 #include <common/paths.h>
@@ -44,7 +45,7 @@ QString findProbe(const QString &baseName, const ProbeABI &probeAbi)
 {
   const QString probePath =
     Paths::probePath(probeAbi.id()) %
-    QDir::separator() %
+    "/" %
     baseName %
     fileExtension();
 

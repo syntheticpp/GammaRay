@@ -23,6 +23,7 @@
 
 #include "config-gammaray.h"
 
+#include <common/paths.h>
 #include <common/probeabi.h>
 #include <common/probeabidetector.h>
 
@@ -39,14 +40,14 @@ private slots:
   {
     ProbeABIDetector detector;
     const ProbeABI abi = detector.abiForExecutable(QCoreApplication::applicationFilePath());
-    QCOMPARE(abi.id(), QString(GAMMARAY_PROBE_ABI));
+    QCOMPARE(abi.id(), QString(Paths::abiName()));
   }
 
   void testDetectProcess()
   {
     ProbeABIDetector detector;
     const ProbeABI abi = detector.abiForProcess(QCoreApplication::applicationPid());
-    QCOMPARE(abi.id(), QString(GAMMARAY_PROBE_ABI));
+    QCOMPARE(abi.id(), QString(Paths::abiName()));
   }
 
   void testContainsQtCore_data()

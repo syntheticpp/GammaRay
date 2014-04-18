@@ -249,6 +249,10 @@ add_feature_info("Widget .ui file export" HAVE_QT_DESIGNER "Requires QtDesigner 
 # Installation settings
 #
 set(BIN_INSTALL_DIR "bin")
+if(MSVC_IDE)
+  set(INTDIR "\"/\"CMAKE_INTDIR\"/\"")
+  set(INVERSE_INTDIR ../)
+endif()
 set(LIB_SUFFIX "" CACHE STRING "Define suffix of directory name (32/64)")
 set(LIB_INSTALL_DIR "lib${LIB_SUFFIX}")
 set(INCLUDE_INSTALL_DIR "include/gammaray")
@@ -455,4 +459,6 @@ install(
 )
 
 
-feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+if(NOT MSVC)
+  feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+endif()

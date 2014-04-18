@@ -52,6 +52,7 @@
 #include <QDir>
 #include <QLibrary>
 #include <QThread>
+#include <QMessageBox>
 
 using namespace GammaRay;
 

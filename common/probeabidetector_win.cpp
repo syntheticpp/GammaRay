@@ -25,6 +25,7 @@
 
 #include "probeabidetector.h"
 #include "probeabi.h"
+#include "paths.h"
 
 #include <QDebug>
 #include <QFile>
@@ -39,7 +40,7 @@ using namespace GammaRay;
 
 ProbeABI ProbeABIDetector::abiForExecutable(const QString& path) const
 {
-  return ProbeABI::fromString(GAMMARAY_PROBE_ABI);
+  return ProbeABI::fromString(Paths::abiName());
 }
 
 ProbeABI ProbeABIDetector::abiForProcess(qint64 pid) const

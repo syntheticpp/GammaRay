@@ -52,31 +52,46 @@ void setRootPath(const QString& rootPath)
 void setRelativeRootPath(const char* relativeRootPath)
 {
   Q_ASSERT(relativeRootPath);
-  setRootPath(QCoreApplication::applicationDirPath() + QDir::separator() + QLatin1String(relativeRootPath));
+  setRootPath(QCoreApplication::applicationDirPath() + "/" + QLatin1String(relativeRootPath));
 }
 
 QString probePath(const QString& probeABI)
 {
-  return rootPath() + QDir::separator()
-    + QLatin1String(GAMMARAY_PLUGIN_INSTALL_DIR) + QDir::separator()
-    + QLatin1String(GAMMARAY_PLUGIN_VERSION) + QDir::separator()
+  return rootPath() + "/"
+    + QLatin1String(GAMMARAY_PLUGIN_INSTALL_DIR) + "/"
+    + QLatin1String(GAMMARAY_PLUGIN_VERSION) + "/"
     + probeABI;
 }
 
 QString binPath()
 {
-  return rootPath() + QDir::separator() + QLatin1String(GAMMARAY_BIN_INSTALL_DIR);
+  return rootPath() + "/" + QLatin1String(GAMMARAY_BIN_INSTALL_DIR);
 }
 
 QString libexecPath()
 {
-  return rootPath() + QDir::separator() + QLatin1String(GAMMARAY_LIBEXEC_INSTALL_DIR);
+  return rootPath() + "/" + QLatin1String(GAMMARAY_LIBEXEC_INSTALL_DIR);
 }
 
 QString currentProbePath()
 {
-  return probePath(GAMMARAY_PROBE_ABI);
+  return probePath(abiName());
 }
+
+
+QString abiName()
+{
+#if !defined(GAMMARAY_PROBE_ABI_RELEASE) && !defined(GAMMARAY_PROBE_ABI_DEBUG)
+    return GAMMARAY_PROBE_ABI;
+#else
+#ifdef QT_DEBUG
+    return GAMMARAY_PROBE_ABI_DEBUG;
+#else
+    return GAMMARAY_PROBE_ABI_RELEASE;
+#endif
+#endif
+}
+
 
 }
 }

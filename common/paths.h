@@ -63,6 +63,9 @@ namespace Paths
 
   /** Returns the path to the current probe location, probePath(GAMMARAY_PROBE_ABI). */
   GAMMARAY_COMMON_EXPORT QString currentProbePath();
+
+  /** Returns current abi name GAMMARAY_PROBE_ABI/DEBUG/RELEASE. */
+  GAMMARAY_COMMON_EXPORT QString abiName();
 }
 }
 
