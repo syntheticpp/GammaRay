@@ -359,7 +359,7 @@ void StateMachineViewerServer::addTransition(QAbstractTransition *transition)
 
   // TODO also show targetless transitions
   if (!targetState)
-      return;
+      targetState = sourceState;
 
   QString label = transition->objectName();
   if (label.isEmpty()) {
