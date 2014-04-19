@@ -23,13 +23,6 @@
 
 #include "gvutils.h"
 
-#include <graphviz/gvc.h>
-#ifdef WITH_CGRAPH
-#  include <graphviz/cgraph.h>
-#else
-#  include <graphviz/graph.h>
-#endif
-
 using namespace GammaRay;
 
 #ifdef WITH_CGRAPH
