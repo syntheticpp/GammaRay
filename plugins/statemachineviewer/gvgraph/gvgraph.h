@@ -24,8 +24,7 @@
 
 #include "gvgraphelements.h"
 #include "gvtypes.h"
-
-#include <graphviz/types.h>
+#include "gvutils.h"
 
 #include <QFont>
 #include <QHash>

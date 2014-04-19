@@ -22,7 +22,19 @@
 #ifndef GAMMARAY_GVUTILS_H
 #define GAMMARAY_GVUTILS_H
 
+#ifdef GAMMARAY_GRAPHVIZ_EMBEDDED
+#include "types.h"
+#include "cgraph.h"
+#include "gvc.h"
+#else
+
 #include <graphviz/types.h>
+#ifdef WITH_CGRAPH
+#  include <graphviz/cgraph.h>
+#else
+#  include <graphviz/graph.h>
+#endif
+#endif
 
 #include <QString>
 

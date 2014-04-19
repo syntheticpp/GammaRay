@@ -23,12 +23,6 @@
 
 #include "gvutils.h"
 
-#include <graphviz/gvc.h>
-#ifdef WITH_CGRAPH
-#  include <graphviz/cgraph.h>
-#else
-#  include <graphviz/graph.h>
-#endif
 
 #include <QColor>
 #include <QDebug>
@@ -40,13 +34,18 @@ using namespace GammaRay;
 using namespace GammaRay::GVUtils;
 using namespace std;
 
+
 /*! Dot uses a 72
  * DPI value for converting it's position coordinates from points to pixels
     while we display at 96 DPI on most operating systems. */
 const qreal DotDefaultDPI = 72.0;
 
 GVGraph::GVGraph(const QString &name)
+#ifdef GAMMARAY_GRAPHVIZ_EMBEDDED
+  : _context(gvContextPlugins(lt_preloaded_symbols, 0)),
+#else
   : _context(gvContext()),
+#endif
     _graph(0),
     _name(name)
 {

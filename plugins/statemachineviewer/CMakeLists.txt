@@ -3,6 +3,8 @@ set(gammaray_statemachineviewer_shared_srcs
   statemachineviewerinterface.cpp
 )
 
+ add_definitions(${LIBCGRAPHVIZ_DEFINITIONS})
+
 # probe part
 set(gammaray_statemachineviewer_plugin_srcs
   statemachineviewerserver.cpp
@@ -43,6 +45,10 @@ set(gammaray_statemachineviewer_ui_plugin_srcs
   gvgraph/gvgraphitems.cpp
   gvgraph/gvutils.cpp
 )
+
+if(GRAPHVIZ_EMBEDDED)
+  add_definitions(-DGAMMARAY_GRAPHVIZ_EMBEDDED)
+endif()
 
 include_directories(
   ${GRAPHVIZ_INCLUDE_DIR}
