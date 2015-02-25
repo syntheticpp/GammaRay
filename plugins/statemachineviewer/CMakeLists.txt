@@ -87,6 +87,10 @@ add_executable(statemachineviewer_test
   test_main.cpp
 )
 
+if(GRAPHVIZ_EMBEDDED)
+  list(APPEND gammaray_statemachineviewer_ui_plugin_libs ${GRAPHVIZ_GRAPH_LIBRARY})
+endif()
+
 target_link_libraries(statemachineviewer_test ${gammaray_statemachineviewer_ui_plugin_libs})
 
 gammaray_add_plugin(gammaray_statemachineviewer_ui_plugin

@@ -325,8 +325,15 @@ set_package_properties(Graphviz PROPERTIES
   URL "http://www.graphviz.org/"
   PURPOSE "Needed for the state machine visualizer plugin."
 )
+
 if(NOT GRAPHVIZ_FOUND AND MSVC)
-  set(LIBCGRAPHVIZ_DLL 1)
+  set(GRAPHVIZ_EMBEDDED 1)
+endif()
+
+if(GRAPHVIZ_EMBEDDED)
+  if(WIN32)
+    set(LIBCGRAPHVIZ_DLL 1)
+  endif()
   add_subdirectory(3rdparty/libcgraphviz)
   set(GRAPHVIZ_MAJOR_VERSION ${LIBCGRAPHVIZ_MAJOR_VERSION})
   set(GRAPHVIZ_MINOR_VERSION ${LIBCGRAPHVIZ_MINOR_VERSION})
